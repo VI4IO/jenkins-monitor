@@ -29,7 +29,7 @@
   <builders>
     <hudson.tasks.Shell>
 		<command>wget https://raw.githubusercontent.com/bHodges97/jenkins-monitor/master/scripts/esdm/jenkins.sh
-			cmhod u+x jenkins.sh
+			chmod u+x jenkins.sh
 			./jenkins.sh</command>
     </hudson.tasks.Shell>
   </builders>
