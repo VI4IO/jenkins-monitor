@@ -32,6 +32,8 @@
 ./configure
 make
 ./testing/basic-tests.sh
+wget https://raw.githubusercontent.com/bHodges97/jenkins-monitor/master/scripts/ior/benchmark_ior.sh
+wget https://raw.githubusercontent.com/bHodges97/jenkins-monitor/master/scripts/ior/benchmark_mdtest.sh
 ./benchmark_ior.sh
 ./benchmark_mdtest.sh</command>
     </hudson.tasks.Shell>

@@ -28,7 +28,8 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>./jenkins.sh</command>
+		<command>wget https://raw.githubusercontent.com/bHodges97/jenkins-monitor/master/scripts/esdm/jenkins.sh
+			./jenkins.sh</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
