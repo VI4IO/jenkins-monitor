@@ -1,0 +1,150 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<project>
+  <actions/>
+  <description/>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@3.10.0">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>https://github.com/hpc/ior.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>*/master</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions/>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>./bootstrap
+./configure
+make
+./testing/basic-tests.sh
+./benchmark_ior.sh
+./benchmark_mdtest.sh</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.plugins.plot.PlotPublisher plugin="plot@2.1.0">
+      <plots>
+        <hudson.plugins.plot.Plot>
+          <title>ior read/write speeds</title>
+          <yaxis>Mib/s</yaxis>
+          <series>
+            <hudson.plugins.plot.CSVSeries>
+              <file>benchmark_ior.csv</file>
+              <label/>
+              <fileType>csv</fileType>
+              <inclusionFlag>OFF</inclusionFlag>
+              <exclusionValues/>
+              <url/>
+              <displayTableFlag>false</displayTableFlag>
+            </hudson.plugins.plot.CSVSeries>
+          </series>
+          <group>ior</group>
+          <numBuilds/>
+          <csvFileName>plot-4747633465495449503.csv</csvFileName>
+          <csvLastModification>0</csvLastModification>
+          <style>line</style>
+          <useDescr>false</useDescr>
+          <keepRecords>false</keepRecords>
+          <exclZero>false</exclZero>
+          <logarithmic>false</logarithmic>
+          <yaxisMinimum/>
+          <yaxisMaximum/>
+        </hudson.plugins.plot.Plot>
+        <hudson.plugins.plot.Plot>
+          <title>Directory Rates</title>
+          <yaxis>ops/sec</yaxis>
+          <series>
+            <hudson.plugins.plot.CSVSeries>
+              <file>benchmark_mdtest_directory.csv</file>
+              <label/>
+              <fileType>csv</fileType>
+              <inclusionFlag>OFF</inclusionFlag>
+              <exclusionValues/>
+              <url/>
+              <displayTableFlag>false</displayTableFlag>
+            </hudson.plugins.plot.CSVSeries>
+          </series>
+          <group>mdtest</group>
+          <numBuilds/>
+          <csvFileName>plot-16228527026025130004.csv</csvFileName>
+          <csvLastModification>0</csvLastModification>
+          <style>line</style>
+          <useDescr>false</useDescr>
+          <keepRecords>false</keepRecords>
+          <exclZero>false</exclZero>
+          <logarithmic>false</logarithmic>
+          <yaxisMinimum/>
+          <yaxisMaximum/>
+        </hudson.plugins.plot.Plot>
+        <hudson.plugins.plot.Plot>
+          <title>File Rates</title>
+          <yaxis>ops/sec</yaxis>
+          <series>
+            <hudson.plugins.plot.CSVSeries>
+              <file>benchmark_mdtest_file.csv</file>
+              <label/>
+              <fileType>csv</fileType>
+              <inclusionFlag>OFF</inclusionFlag>
+              <exclusionValues/>
+              <url/>
+              <displayTableFlag>false</displayTableFlag>
+            </hudson.plugins.plot.CSVSeries>
+          </series>
+          <group>mdtest</group>
+          <numBuilds/>
+          <csvFileName>plot-17275327126809348752.csv</csvFileName>
+          <csvLastModification>0</csvLastModification>
+          <style>line</style>
+          <useDescr>false</useDescr>
+          <keepRecords>false</keepRecords>
+          <exclZero>false</exclZero>
+          <logarithmic>false</logarithmic>
+          <yaxisMinimum/>
+          <yaxisMaximum/>
+        </hudson.plugins.plot.Plot>
+        <hudson.plugins.plot.Plot>
+          <title>Tree Rates</title>
+          <yaxis>ops/sec</yaxis>
+          <series>
+            <hudson.plugins.plot.CSVSeries>
+              <file>benchmark_mdtest_tree.csv</file>
+              <label/>
+              <fileType>csv</fileType>
+              <inclusionFlag>OFF</inclusionFlag>
+              <exclusionValues/>
+              <url/>
+              <displayTableFlag>false</displayTableFlag>
+            </hudson.plugins.plot.CSVSeries>
+          </series>
+          <group>mdtest</group>
+          <numBuilds/>
+          <csvFileName>plot-13254075975338870038.csv</csvFileName>
+          <csvLastModification>0</csvLastModification>
+          <style>line</style>
+          <useDescr>false</useDescr>
+          <keepRecords>false</keepRecords>
+          <exclZero>false</exclZero>
+          <logarithmic>false</logarithmic>
+          <yaxisMinimum/>
+          <yaxisMaximum/>
+        </hudson.plugins.plot.Plot>
+      </plots>
+    </hudson.plugins.plot.PlotPublisher>
+  </publishers>
+  <buildWrappers/>
+</project>
