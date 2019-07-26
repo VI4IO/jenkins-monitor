@@ -38,4 +38,4 @@ while read LINE
 do
 	echo -n ", $LINE" >> $FILE
 done
-echo "" >> $FILE:
+echo "" >> ../../$FILE
