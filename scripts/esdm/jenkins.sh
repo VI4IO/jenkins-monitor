@@ -36,6 +36,6 @@ cd src/test
 ./readwrite-benchmark | awk '$1 ~ /^(Read|Write)/ {print $3}' | 
 while read LINE
 do
-	echo -n ", $LINE" >> $FILE
+	echo -n ", $LINE" >> ../../$FILE
 done
 echo "" >> ../../$FILE
