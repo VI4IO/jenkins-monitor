@@ -32,9 +32,8 @@ fi
 echo "Date, Read, Write" >> $FILE
 echo -n "`date +%D`" >> $FILE
 
-wget https://raw.githubusercontent.com/bHodges97/jenkins-monitor/master/scripts/esdm/build/benchmarkmockup.sh
-chmod u+x benchmarkmockup.sh
-./benchmarkmockup.sh | tr -d "[:alpha:] [:blank]" |
+cd src/test
+./readwrite-benchmark | awk '$1 ~ /^(Read|Write)/ {print $3}' | 
 while read LINE
 do
 	echo -n ", $LINE" >> $FILE
