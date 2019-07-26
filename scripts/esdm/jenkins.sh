@@ -29,7 +29,7 @@ else
 	rm $FILE
 fi
 
-echo "Date, Read, Write" >> $FILE
+echo "Date, Write, Read" >> $FILE
 echo -n "`date +%D`" >> $FILE
 
 cd src/test
