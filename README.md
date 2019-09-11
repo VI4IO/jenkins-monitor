@@ -41,6 +41,14 @@ Update your local package index, then finally install Jenkins:
 sudo apt-get update
 sudo apt-get install jenkins
 ```
+
+### Adding ESDM and IOR
+```
+cp -r ./docker/jenkins/jobs/* /var/lib/jenkins/jobs/
+chown -R jenkins:jenkins /var/lib/jenkins/jobs/
+service jenkins restart
+```
+### Setting up jenkins
 Get the set-up password
 ```
 cat /var/lib/jenkins/secrets/initialAdminPassword 
@@ -48,10 +56,8 @@ cat /var/lib/jenkins/secrets/initialAdminPassword
 Visit localhost:8081
  * Enter set-up password
  * Select "Install suggested plugins"
+ 
 After jenkins is configured:
  * Manage Jenkins > Manage Plugins > Availiable
- * Search and install "dashboard-view", "plot", "xunit", "ws-cleanup", "performance", "postbuild-task"
+ * Search and install "dashboard-view", "plot", "github", "xunit", "ws-cleanup", "performance", "postbuild-task"
  
-
-### Adding ESDM and IOR
-TODO
