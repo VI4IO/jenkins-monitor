@@ -70,7 +70,7 @@ In the configuration page of each job, in execute shell remove the wget and chmo
 To create a new view, visit: {jenkins-url}/user/admin/my-views/newView
 
 ### Using the preset
-Insert the contents of [dashboard.xml](dashboard.xml) in ./var/lib/jenkins/config.xml after the node
+Insert the contents of [dashboard.xml](dashboard.xml) in /var/lib/jenkins/config.xml after the node
 ```
 <hudson.model.AllView>
   <owner class="hudson" reference="../../.."/>
