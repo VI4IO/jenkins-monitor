@@ -1,0 +1,135 @@
+<hudson.plugins.view.dashboard.Dashboard plugin="dashboard-view@2.11">
+  <owner class="hudson" reference="../../.."/>
+  <name>esdm</name>
+  <filterExecutors>false</filterExecutors>
+  <filterQueue>false</filterQueue>
+  <properties class="hudson.model.View$PropertyList"/>
+  <jobNames>
+	<comparator class="hudson.util.CaseInsensitiveComparator"/>
+	<string>esdm</string>
+  </jobNames>
+  <jobFilters/>
+  <columns>
+	<hudson.views.StatusColumn/>
+	<hudson.views.WeatherColumn/>
+	<hudson.views.JobColumn/>
+	<hudson.views.LastSuccessColumn/>
+	<hudson.views.LastFailureColumn/>
+	<hudson.views.LastDurationColumn/>
+	<hudson.views.BuildButtonColumn/>
+  </columns>
+  <recurse>false</recurse>
+  <useCssStyle>false</useCssStyle>
+  <includeStdJobList>true</includeStdJobList>
+  <hideJenkinsPanels>false</hideJenkinsPanels>
+  <leftPortletWidth>50%</leftPortletWidth>
+  <rightPortletWidth>50%</rightPortletWidth>
+  <leftPortlets>
+	<hudson.plugins.view.dashboard.core.IframePortlet>
+	  <name>esdm tests</name>
+	  <iframeSource>/job/esdm/performance/errorsGraph?width=300&amp;height=225&amp;performanceReportPosition=Test.xml</iframeSource>
+	  <effectiveUrl>/job/esdm/performance/errorsGraph?width=300&amp;height=225&amp;performanceReportPosition=Test.xml</effectiveUrl>
+	  <divStyle>width:330px;height:255px;display:inline-block</divStyle>
+	</hudson.plugins.view.dashboard.core.IframePortlet>
+  </leftPortlets>
+  <rightPortlets>
+	<hudson.plugins.view.dashboard.core.IframePortlet>
+	  <name>esdm tests</name>
+	  <iframeSource>/job/esdm/performance/respondingTimeGraph?width=300&amp;height=225&amp;legendLimit=5&amp;performanceReportPosition=Test.xml</iframeSource>
+	  <effectiveUrl>/job/esdm/performance/respondingTimeGraph?width=300&amp;height=225&amp;legendLimit=5&amp;performanceReportPosition=Test.xml</effectiveUrl>
+	  <divStyle>width:330px;height:255px;display:inline-block</divStyle>
+	</hudson.plugins.view.dashboard.core.IframePortlet>
+  </rightPortlets>
+  <topPortlets>
+	<hudson.plugins.view.dashboard.stats.StatJobs>
+	  <name>Job statistics</name>
+	</hudson.plugins.view.dashboard.stats.StatJobs>
+	<hudson.plugins.view.dashboard.test.TestStatisticsChart>
+	  <name>Test Statistics Chart</name>
+	</hudson.plugins.view.dashboard.test.TestStatisticsChart>
+	<hudson.plugins.view.dashboard.test.TestStatisticsPortlet>
+	  <name>Test Statistics Grid</name>
+	  <useBackgroundColors>false</useBackgroundColors>
+	  <skippedColor>FDB813</skippedColor>
+	  <successColor>71E66D</successColor>
+	  <failureColor>E86850</failureColor>
+	  <hideZeroTestProjects>false</hideZeroTestProjects>
+	  <useAlternatePercentagesOnLimits>false</useAlternatePercentagesOnLimits>
+	</hudson.plugins.view.dashboard.test.TestStatisticsPortlet>
+	<hudson.plugins.view.dashboard.test.TestTrendChart>
+	  <name>Test Trend Chart</name>
+	  <graphWidth>300</graphWidth>
+	  <graphHeight>220</graphHeight>
+	  <dateRange>0</dateRange>
+	  <dateShift>0</dateShift>
+	  <displayStatus>ALL</displayStatus>
+	</hudson.plugins.view.dashboard.test.TestTrendChart>
+	<hudson.plugins.view.dashboard.core.IframePortlet>
+	  <name>esdm read-write speeds</name>
+	  <iframeSource>/job/esdm/plot/getPlot?index=0&amp;width=750&amp;height=450</iframeSource>
+	  <effectiveUrl>/job/esdm/plot/getPlot?index=0&amp;width=750&amp;height=450</effectiveUrl>
+	  <divStyle>width:780px;height:480px;</divStyle>
+	</hudson.plugins.view.dashboard.core.IframePortlet>
+  </topPortlets>
+  <bottomPortlets/>
+</hudson.plugins.view.dashboard.Dashboard>
+<hudson.plugins.view.dashboard.Dashboard plugin="dashboard-view@2.11">
+  <owner class="hudson" reference="../../.."/>
+  <name>ior</name>
+  <filterExecutors>false</filterExecutors>
+  <filterQueue>false</filterQueue>
+  <properties class="hudson.model.View$PropertyList"/>
+  <jobNames>
+	<comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../hudson.plugins.view.dashboard.Dashboard/jobNames/comparator"/>
+	<string>ior</string>
+  </jobNames>
+  <jobFilters/>
+  <columns>
+	<hudson.views.StatusColumn/>
+	<hudson.views.WeatherColumn/>
+	<hudson.views.JobColumn/>
+	<hudson.views.LastSuccessColumn/>
+	<hudson.views.LastFailureColumn/>
+	<hudson.views.LastDurationColumn/>
+	<hudson.views.BuildButtonColumn/>
+  </columns>
+  <recurse>false</recurse>
+  <useCssStyle>false</useCssStyle>
+  <includeStdJobList>true</includeStdJobList>
+  <hideJenkinsPanels>false</hideJenkinsPanels>
+  <leftPortletWidth>50%</leftPortletWidth>
+  <rightPortletWidth>50%</rightPortletWidth>
+  <leftPortlets/>
+  <rightPortlets/>
+  <topPortlets>
+	<hudson.plugins.view.dashboard.stats.StatJobs>
+	  <name>Job statistics</name>
+	</hudson.plugins.view.dashboard.stats.StatJobs>
+	<hudson.plugins.view.dashboard.core.IframePortlet>
+	  <name>IOR read write speeds</name>
+	  <iframeSource>/job/ior/plot/ior/getPlot?index=0&amp;width=750&amp;height=450</iframeSource>
+	  <effectiveUrl>/job/ior/plot/ior/getPlot?index=0&amp;width=750&amp;height=450</effectiveUrl>
+	  <divStyle>width:780px;height:480px;</divStyle>
+	</hudson.plugins.view.dashboard.core.IframePortlet>
+	<hudson.plugins.view.dashboard.core.IframePortlet>
+	  <name>mdtest</name>
+	  <iframeSource>/job/ior/plot/mdtest/getPlot?index=0&amp;width=750&amp;height=450</iframeSource>
+	  <effectiveUrl>/job/ior/plot/mdtest/getPlot?index=0&amp;width=750&amp;height=450</effectiveUrl>
+	  <divStyle>width:780px;height:480px;</divStyle>
+	</hudson.plugins.view.dashboard.core.IframePortlet>
+	<hudson.plugins.view.dashboard.core.IframePortlet>
+	  <name>mdtest</name>
+	  <iframeSource>/job/ior/plot/mdtest/getPlot?index=1&amp;width=750&amp;height=450</iframeSource>
+	  <effectiveUrl>/job/ior/plot/mdtest/getPlot?index=1&amp;width=750&amp;height=450</effectiveUrl>
+	  <divStyle>width:780px;height:480px;</divStyle>
+	</hudson.plugins.view.dashboard.core.IframePortlet>
+	<hudson.plugins.view.dashboard.core.IframePortlet>
+	  <name>mdtest</name>
+	  <iframeSource>/job/ior/plot/mdtest/getPlot?index=2&amp;width=750&amp;height=450</iframeSource>
+	  <effectiveUrl>/job/ior/plot/mdtest/getPlot?index=2&amp;width=750&amp;height=450</effectiveUrl>
+	  <divStyle>width:780px;height:480px;</divStyle>
+	</hudson.plugins.view.dashboard.core.IframePortlet>
+  </topPortlets>
+  <bottomPortlets/>
+</hudson.plugins.view.dashboard.Dashboard>
+
