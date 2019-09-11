@@ -19,7 +19,7 @@ docker run -p 8080:8080 -p 50000:50000 jenkins-monitor/jenkins
 2. Click on the cross on the top right or select "Select Plugins to Install" and install additonal plugins
 
 #### Issues
-The docker Jenkins version is behind and the plugins have missing options in the web interface. As such editing the configuration using the website will break the set up. If  this happends, for ESDM: add ```<pattern>build/Testing/**/Test.xml</pattern>``` under ```<ctesttype>``` in the project's config.xml file and select ```reload configuration from disk``` from ```manage jenkins``` in the Jenkins menu.
+The docker Jenkins version is behind and the plugins have missing options in the web interface. As such editing the configuration using the website will break the set up. If  this happens, for ESDM, add ```<pattern>build/Testing/**/Test.xml</pattern>``` under ```<ctesttype>``` in the project's config.xml file and select ```reload configuration from disk``` from ```manage jenkins``` in the Jenkins menu.
 
 
 ## Installing without docker
@@ -59,4 +59,14 @@ Visit localhost:8081
 After jenkins is configured:
  * Manage Jenkins > Manage Plugins > Availiable
  * Search and install "dashboard-view", "plot", "github", "xunit", "ws-cleanup", "performance", "postbuild-task"
+ 
+Optional:
+In the configuration page of each job, in execute shell remove the wget and chmod commands.
+ 
+## Configuring the dashboard
+
+[Dashboard view guide]( https://wiki.jenkins.io/display/JENKINS/Dashboard+View)
+
+To create a new view, visit: {jenkins-url}/user/admin/my-views/newView
+
  
