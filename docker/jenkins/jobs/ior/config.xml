@@ -32,8 +32,10 @@
 ./configure
 make
 ./testing/basic-tests.sh
-wget https://raw.githubusercontent.com/bHodges97/jenkins-monitor/master/scripts/ior/benchmark_ior.sh -O benchmark_ior.sh
-wget https://raw.githubusercontent.com/bHodges97/jenkins-monitor/master/scripts/ior/benchmark_mdtest.sh -O benchmark_mdtest.sh
+if [[ ! -e benchmark_ior.sh ]] ; then
+  wget https://raw.githubusercontent.com/VI4IO/jenkins-monitor/master/scripts/ior/benchmark_ior.sh -O benchmark_ior.sh
+  wget https://raw.githubusercontent.com/VI4IO/jenkins-monitor/master/scripts/ior/benchmark_mdtest.sh -O benchmark_mdtest.sh
+fi
 chmod u+x benchmark_*
 ./benchmark_ior.sh
 ./benchmark_mdtest.sh</command>

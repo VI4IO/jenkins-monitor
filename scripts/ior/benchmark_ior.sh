@@ -5,19 +5,31 @@ VALUES=""
 for log in test_logs/*
 do
     NUMBER="${log##*.}"
-    i=0
+    i=1
+    enable=0
+    extra=""
     while read LINE
     do
-        i=$(($i+1))
+        if [[ $LINE == "Summary of all tests:" ]] ; then
+          enable=1
+        fi
+        if [[ $enable == 0 ]] ; then
+          continue
+        fi
         SPEED=$(echo $LINE | awk '{print $2}')
-        if [[ $LINE == Read* ]]; then
-            TITLES="$TITLES, $NUMBER (READ $i)"
+        if [[ $i != 1 ]] ; then
+          extra="-$i"
+        fi
+        if [[ $LINE == read* ]]; then
+            i=$(($i+1))
+            TITLES="$TITLES, $NUMBER-read$extra"
             VALUES="$VALUES, $SPEED"
-        elif [[ $LINE == Write* ]]; then
-            TITLES="$TITLES, $NUMBER (WRITE $i)"
+        elif [[ $LINE == write* ]]; then
+            i=$(($i+1))
+            TITLES="$TITLES, $NUMBER-write$extra"
             VALUES="$VALUES, $SPEED"
         fi
-    done < <(cat $log | grep -E "^(Max Read|Max Write)" | cut -b5-    )
+    done < <(cat $log)
 done
 
 FILE=benchmark_ior.csv
