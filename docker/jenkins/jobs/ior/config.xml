@@ -43,7 +43,7 @@ $HOME/jobs/ior/benchmark_md-workbench.sh</command>
     <hudson.plugins.plot.PlotPublisher plugin="plot@2.1.8">
       <plots>
         <hudson.plugins.plot.Plot>
-          <title>ior read/write speeds</title>
+          <title>ior read/write speeds basic</title>
           <description></description>
           <yaxis>Mib/s</yaxis>
           <series>
@@ -75,7 +75,39 @@ $HOME/jobs/ior/benchmark_md-workbench.sh</command>
           <yaxisMaximum></yaxisMaximum>
         </hudson.plugins.plot.Plot>
         <hudson.plugins.plot.Plot>
-          <title>Directory Rates</title>
+          <title>ior read/write speeds advanced</title>
+          <description></description>
+          <yaxis>Mib/s</yaxis>
+          <series>
+            <hudson.plugins.plot.CSVSeries>
+              <file>benchmark_ior-advanced.csv</file>
+              <label></label>
+              <fileType>csv</fileType>
+              <inclusionFlag>OFF</inclusionFlag>
+              <exclusionValues></exclusionValues>
+              <exclusionValuesList class="java.util.Arrays$ArrayList">
+                <a class="string-array">
+                  <string></string>
+                </a>
+              </exclusionValuesList>
+              <url></url>
+              <displayTableFlag>false</displayTableFlag>
+            </hudson.plugins.plot.CSVSeries>
+          </series>
+          <group>ior</group>
+          <numBuilds></numBuilds>
+          <csvFileName>plot-4747633465495449502.csv</csvFileName>
+          <csvLastModification>0</csvLastModification>
+          <style>line</style>
+          <useDescr>false</useDescr>
+          <keepRecords>false</keepRecords>
+          <exclZero>false</exclZero>
+          <logarithmic>false</logarithmic>
+          <yaxisMinimum></yaxisMinimum>
+          <yaxisMaximum></yaxisMaximum>
+        </hudson.plugins.plot.Plot>
+        <hudson.plugins.plot.Plot>
+          <title>Directory Rates basic</title>
           <description></description>
           <yaxis>ops/sec</yaxis>
           <series>
@@ -107,7 +139,7 @@ $HOME/jobs/ior/benchmark_md-workbench.sh</command>
           <yaxisMaximum></yaxisMaximum>
         </hudson.plugins.plot.Plot>
         <hudson.plugins.plot.Plot>
-          <title>File Rates</title>
+          <title>File Rates basic</title>
           <description></description>
           <yaxis>ops/sec</yaxis>
           <series>
@@ -139,7 +171,7 @@ $HOME/jobs/ior/benchmark_md-workbench.sh</command>
           <yaxisMaximum></yaxisMaximum>
         </hudson.plugins.plot.Plot>
         <hudson.plugins.plot.Plot>
-          <title>Tree Rates</title>
+          <title>Tree Rates basic</title>
           <description></description>
           <yaxis>ops/sec</yaxis>
           <series>
@@ -161,6 +193,102 @@ $HOME/jobs/ior/benchmark_md-workbench.sh</command>
           <group>mdtest</group>
           <numBuilds></numBuilds>
           <csvFileName>plot-13254075975338870038.csv</csvFileName>
+          <csvLastModification>0</csvLastModification>
+          <style>line</style>
+          <useDescr>false</useDescr>
+          <keepRecords>false</keepRecords>
+          <exclZero>false</exclZero>
+          <logarithmic>false</logarithmic>
+          <yaxisMinimum></yaxisMinimum>
+          <yaxisMaximum></yaxisMaximum>
+        </hudson.plugins.plot.Plot>
+        <hudson.plugins.plot.Plot>
+          <title>Directory Rates advanced</title>
+          <description></description>
+          <yaxis>ops/sec</yaxis>
+          <series>
+            <hudson.plugins.plot.CSVSeries>
+              <file>benchmark_mdtest_directory-advanced.csv</file>
+              <label></label>
+              <fileType>csv</fileType>
+              <inclusionFlag>OFF</inclusionFlag>
+              <exclusionValues></exclusionValues>
+              <exclusionValuesList class="java.util.Arrays$ArrayList">
+                <a class="string-array">
+                  <string></string>
+                </a>
+              </exclusionValuesList>
+              <url></url>
+              <displayTableFlag>false</displayTableFlag>
+            </hudson.plugins.plot.CSVSeries>
+          </series>
+          <group>mdtest</group>
+          <numBuilds></numBuilds>
+          <csvFileName>plot-16228527026025130002.csv</csvFileName>
+          <csvLastModification>0</csvLastModification>
+          <style>line</style>
+          <useDescr>false</useDescr>
+          <keepRecords>false</keepRecords>
+          <exclZero>false</exclZero>
+          <logarithmic>false</logarithmic>
+          <yaxisMinimum></yaxisMinimum>
+          <yaxisMaximum></yaxisMaximum>
+        </hudson.plugins.plot.Plot>
+        <hudson.plugins.plot.Plot>
+          <title>File Rates advanced</title>
+          <description></description>
+          <yaxis>ops/sec</yaxis>
+          <series>
+            <hudson.plugins.plot.CSVSeries>
+              <file>benchmark_mdtest_file-advanced.csv</file>
+              <label></label>
+              <fileType>csv</fileType>
+              <inclusionFlag>OFF</inclusionFlag>
+              <exclusionValues></exclusionValues>
+              <exclusionValuesList class="java.util.Arrays$ArrayList">
+                <a class="string-array">
+                  <string></string>
+                </a>
+              </exclusionValuesList>
+              <url></url>
+              <displayTableFlag>false</displayTableFlag>
+            </hudson.plugins.plot.CSVSeries>
+          </series>
+          <group>mdtest</group>
+          <numBuilds></numBuilds>
+          <csvFileName>plot-17275327126809348753.csv</csvFileName>
+          <csvLastModification>0</csvLastModification>
+          <style>line</style>
+          <useDescr>false</useDescr>
+          <keepRecords>false</keepRecords>
+          <exclZero>false</exclZero>
+          <logarithmic>false</logarithmic>
+          <yaxisMinimum></yaxisMinimum>
+          <yaxisMaximum></yaxisMaximum>
+        </hudson.plugins.plot.Plot>
+        <hudson.plugins.plot.Plot>
+          <title>Tree Rates advanced</title>
+          <description></description>
+          <yaxis>ops/sec</yaxis>
+          <series>
+            <hudson.plugins.plot.CSVSeries>
+              <file>benchmark_mdtest_tree-advanced.csv</file>
+              <label></label>
+              <fileType>csv</fileType>
+              <inclusionFlag>OFF</inclusionFlag>
+              <exclusionValues></exclusionValues>
+              <exclusionValuesList class="java.util.Arrays$ArrayList">
+                <a class="string-array">
+                  <string></string>
+                </a>
+              </exclusionValuesList>
+              <url></url>
+              <displayTableFlag>false</displayTableFlag>
+            </hudson.plugins.plot.CSVSeries>
+          </series>
+          <group>mdtest</group>
+          <numBuilds></numBuilds>
+          <csvFileName>plot-13254075975338870036.csv</csvFileName>
           <csvLastModification>0</csvLastModification>
           <style>line</style>
           <useDescr>false</useDescr>
