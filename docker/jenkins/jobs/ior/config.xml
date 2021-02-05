@@ -1,10 +1,10 @@
-<?xml version="1.1" encoding="UTF-8"?>
+<?xml version='1.1' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description/>
+  <description></description>
   <keepDependencies>false</keepDependencies>
   <properties/>
-  <scm class="hudson.plugins.git.GitSCM" plugin="git@3.10.0">
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@4.5.2">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
@@ -33,34 +33,37 @@
 make
 ./testing/basic-tests.sh
 ./testing/complex-tests.sh
-if [[ ! -e benchmark_ior.sh ]] ; then
-  wget https://raw.githubusercontent.com/VI4IO/jenkins-monitor/master/scripts/ior/benchmark_ior.sh -O benchmark_ior.sh
-  wget https://raw.githubusercontent.com/VI4IO/jenkins-monitor/master/scripts/ior/benchmark_mdtest.sh -O benchmark_mdtest.sh
-  chmod u+x benchmark_*
-fi
-./benchmark_ior.sh
-./benchmark_mdtest.sh</command>
+$HOME/jobs/ior/benchmark_ior.sh
+$HOME/jobs/ior/benchmark_mdtest.sh
+$HOME/jobs/ior/benchmark_md-workbench.sh</command>
+      <configuredLocalRules/>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
-    <hudson.plugins.plot.PlotPublisher plugin="plot@2.1.0">
+    <hudson.plugins.plot.PlotPublisher plugin="plot@2.1.8">
       <plots>
         <hudson.plugins.plot.Plot>
           <title>ior read/write speeds</title>
+          <description></description>
           <yaxis>Mib/s</yaxis>
           <series>
             <hudson.plugins.plot.CSVSeries>
-              <file>benchmark_ior.csv</file>
-              <label/>
+              <file>benchmark_ior-basic.csv</file>
+              <label></label>
               <fileType>csv</fileType>
               <inclusionFlag>OFF</inclusionFlag>
-              <exclusionValues/>
-              <url/>
+              <exclusionValues></exclusionValues>
+              <exclusionValuesList class="java.util.Arrays$ArrayList">
+                <a class="string-array">
+                  <string></string>
+                </a>
+              </exclusionValuesList>
+              <url></url>
               <displayTableFlag>false</displayTableFlag>
             </hudson.plugins.plot.CSVSeries>
           </series>
           <group>ior</group>
-          <numBuilds/>
+          <numBuilds></numBuilds>
           <csvFileName>plot-4747633465495449503.csv</csvFileName>
           <csvLastModification>0</csvLastModification>
           <style>line</style>
@@ -68,25 +71,31 @@ fi
           <keepRecords>false</keepRecords>
           <exclZero>false</exclZero>
           <logarithmic>false</logarithmic>
-          <yaxisMinimum/>
-          <yaxisMaximum/>
+          <yaxisMinimum></yaxisMinimum>
+          <yaxisMaximum></yaxisMaximum>
         </hudson.plugins.plot.Plot>
         <hudson.plugins.plot.Plot>
           <title>Directory Rates</title>
+          <description></description>
           <yaxis>ops/sec</yaxis>
           <series>
             <hudson.plugins.plot.CSVSeries>
-              <file>benchmark_mdtest_directory.csv</file>
-              <label/>
+              <file>benchmark_mdtest_directory-basic.csv</file>
+              <label></label>
               <fileType>csv</fileType>
               <inclusionFlag>OFF</inclusionFlag>
-              <exclusionValues/>
-              <url/>
+              <exclusionValues></exclusionValues>
+              <exclusionValuesList class="java.util.Arrays$ArrayList">
+                <a class="string-array">
+                  <string></string>
+                </a>
+              </exclusionValuesList>
+              <url></url>
               <displayTableFlag>false</displayTableFlag>
             </hudson.plugins.plot.CSVSeries>
           </series>
           <group>mdtest</group>
-          <numBuilds/>
+          <numBuilds></numBuilds>
           <csvFileName>plot-16228527026025130004.csv</csvFileName>
           <csvLastModification>0</csvLastModification>
           <style>line</style>
@@ -94,25 +103,31 @@ fi
           <keepRecords>false</keepRecords>
           <exclZero>false</exclZero>
           <logarithmic>false</logarithmic>
-          <yaxisMinimum/>
-          <yaxisMaximum/>
+          <yaxisMinimum></yaxisMinimum>
+          <yaxisMaximum></yaxisMaximum>
         </hudson.plugins.plot.Plot>
         <hudson.plugins.plot.Plot>
           <title>File Rates</title>
+          <description></description>
           <yaxis>ops/sec</yaxis>
           <series>
             <hudson.plugins.plot.CSVSeries>
-              <file>benchmark_mdtest_file.csv</file>
-              <label/>
+              <file>benchmark_mdtest_file-basic.csv</file>
+              <label></label>
               <fileType>csv</fileType>
               <inclusionFlag>OFF</inclusionFlag>
-              <exclusionValues/>
-              <url/>
+              <exclusionValues></exclusionValues>
+              <exclusionValuesList class="java.util.Arrays$ArrayList">
+                <a class="string-array">
+                  <string></string>
+                </a>
+              </exclusionValuesList>
+              <url></url>
               <displayTableFlag>false</displayTableFlag>
             </hudson.plugins.plot.CSVSeries>
           </series>
           <group>mdtest</group>
-          <numBuilds/>
+          <numBuilds></numBuilds>
           <csvFileName>plot-17275327126809348752.csv</csvFileName>
           <csvLastModification>0</csvLastModification>
           <style>line</style>
@@ -120,25 +135,31 @@ fi
           <keepRecords>false</keepRecords>
           <exclZero>false</exclZero>
           <logarithmic>false</logarithmic>
-          <yaxisMinimum/>
-          <yaxisMaximum/>
+          <yaxisMinimum></yaxisMinimum>
+          <yaxisMaximum></yaxisMaximum>
         </hudson.plugins.plot.Plot>
         <hudson.plugins.plot.Plot>
           <title>Tree Rates</title>
+          <description></description>
           <yaxis>ops/sec</yaxis>
           <series>
             <hudson.plugins.plot.CSVSeries>
-              <file>benchmark_mdtest_tree.csv</file>
-              <label/>
+              <file>benchmark_mdtest_tree-basic.csv</file>
+              <label></label>
               <fileType>csv</fileType>
               <inclusionFlag>OFF</inclusionFlag>
-              <exclusionValues/>
-              <url/>
+              <exclusionValues></exclusionValues>
+              <exclusionValuesList class="java.util.Arrays$ArrayList">
+                <a class="string-array">
+                  <string></string>
+                </a>
+              </exclusionValuesList>
+              <url></url>
               <displayTableFlag>false</displayTableFlag>
             </hudson.plugins.plot.CSVSeries>
           </series>
           <group>mdtest</group>
-          <numBuilds/>
+          <numBuilds></numBuilds>
           <csvFileName>plot-13254075975338870038.csv</csvFileName>
           <csvLastModification>0</csvLastModification>
           <style>line</style>
@@ -146,8 +167,8 @@ fi
           <keepRecords>false</keepRecords>
           <exclZero>false</exclZero>
           <logarithmic>false</logarithmic>
-          <yaxisMinimum/>
-          <yaxisMaximum/>
+          <yaxisMinimum></yaxisMinimum>
+          <yaxisMaximum></yaxisMaximum>
         </hudson.plugins.plot.Plot>
       </plots>
     </hudson.plugins.plot.PlotPublisher>

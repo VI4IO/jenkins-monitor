@@ -2,7 +2,9 @@
 
 TITLES=""
 VALUES=""
-for log in test_logs/*
+
+for BTYPE in basic advanced ; do
+for log in $HOME/workspace/ior/test_logs/$BTYPE/*
 do
     NUMBER="${log##*.}"
     i=1
@@ -32,7 +34,9 @@ do
     done < <(cat $log)
 done
 
-FILE=benchmark_ior.csv
+FILE=benchmark_ior-$BTYPE.csv
 rm -f $FILE
 echo $TITLES | cut -b3- >> $FILE
 echo $VALUES | cut -b3- >> $FILE
+
+done

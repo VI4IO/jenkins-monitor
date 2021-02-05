@@ -7,7 +7,8 @@ FILE_VALUE=""
 TREE=""
 TREE_VALUE=""
 
-for log in test_logs/*
+for BTYPE in basic advanced ; do
+for log in $HOME/workspace/ior/test_logs/$BTYPE/*
 do
     NUMBER="${log##*.}"
     while read LINE
@@ -27,17 +28,19 @@ do
     done < <(cat $log | cut -b4- | grep -E "^(Directory|File|Tree)")
 done
 
-DIRECTORY_CSV=benchmark_mdtest_directory.csv
+DIRECTORY_CSV=benchmark_mdtest_directory-$BTYPE.csv
 rm -f $DIRECTORY_CSV
 echo $DIRECTORY | cut -b3-  >> $DIRECTORY_CSV
 echo $DIRECTORY_VALUE | cut -b3- >> $DIRECTORY_CSV
 
-FILE_CSV=benchmark_mdtest_file.csv
+FILE_CSV=benchmark_mdtest_file-$BTYPE.csv
 rm -f $FILE_CSV
 echo $FILE | cut -b3-  >> $FILE_CSV
 echo $FILE_VALUE | cut -b3- >> $FILE_CSV
 
-TREE_CSV=benchmark_mdtest_tree.csv
+TREE_CSV=benchmark_mdtest_tree-$BTYPE.csv
 rm -f $TREE_CSV
 echo $TREE | cut -b3-  >> $TREE_CSV
 echo $TREE_VALUE | cut -b3- >> $TREE_CSV
+
+done
