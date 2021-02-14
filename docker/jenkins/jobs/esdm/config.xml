@@ -1,10 +1,15 @@
-<?xml version="1.1" encoding="UTF-8"?>
+<?xml version='1.1' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description/>
+  <description></description>
   <keepDependencies>false</keepDependencies>
-  <properties/>
-  <scm class="hudson.plugins.git.GitSCM" plugin="git@3.10.0">
+  <properties>
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.32.0">
+      <projectUrl>https://github.com/ESiWACE/esdm/</projectUrl>
+      <displayName></displayName>
+    </com.coravy.hudson.plugins.github.GithubProjectProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@4.5.2">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
@@ -24,20 +29,26 @@
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <triggers/>
+  <triggers>
+    <hudson.triggers.TimerTrigger>
+      <spec>H 3	* * *</spec>
+    </hudson.triggers.TimerTrigger>
+  </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-		<command>wget https://raw.githubusercontent.com/bHodges97/jenkins-monitor/master/scripts/esdm/jenkins.sh -O jenkins.sh
+      <command>wget https://raw.githubusercontent.com/bHodges97/jenkins-monitor/master/scripts/esdm/jenkins.sh -O jenkins.sh
 			chmod u+x jenkins.sh
 			./jenkins.sh</command>
+      <configuredLocalRules/>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
-    <xunit plugin="xunit@2.3.5">
+    <xunit plugin="xunit@3.0.0">
       <types>
         <CTestType>
           <pattern>build/Testing/**/Test.xml</pattern>
+          <excludesPattern></excludesPattern>
           <skipNoTestFiles>false</skipNoTestFiles>
           <failIfNotNew>false</failIfNotNew>
           <deleteOutputFiles>false</deleteOutputFiles>
@@ -48,16 +59,18 @@
       <thresholdMode>1</thresholdMode>
       <extraConfiguration>
         <testTimeMargin>3000</testTimeMargin>
+        <sleepTime>0</sleepTime>
         <reduceLog>true</reduceLog>
+        <followSymlink>true</followSymlink>
       </extraConfiguration>
       <testDataPublishers class="empty-set"/>
     </xunit>
-    <hudson.plugins.postbuildtask.PostbuildTask plugin="postbuild-task@1.8">
+    <hudson.plugins.postbuildtask.PostbuildTask plugin="postbuild-task@1.9">
       <tasks>
         <hudson.plugins.postbuildtask.TaskProperties>
           <logTexts>
             <hudson.plugins.postbuildtask.LogProperties>
-              <logText/>
+              <logText></logText>
               <operator>AND</operator>
             </hudson.plugins.postbuildtask.LogProperties>
           </logTexts>
@@ -67,10 +80,10 @@
         </hudson.plugins.postbuildtask.TaskProperties>
       </tasks>
     </hudson.plugins.postbuildtask.PostbuildTask>
-    <hudson.plugins.performance.PerformancePublisher plugin="performance@3.16">
+    <hudson.plugins.performance.PerformancePublisher plugin="performance@3.18">
       <errorFailedThreshold>-1</errorFailedThreshold>
       <errorUnstableThreshold>-1</errorUnstableThreshold>
-      <errorUnstableResponseTimeThreshold/>
+      <errorUnstableResponseTimeThreshold></errorUnstableResponseTimeThreshold>
       <relativeFailedThresholdPositive>-1.0</relativeFailedThresholdPositive>
       <relativeFailedThresholdNegative>-1.0</relativeFailedThresholdNegative>
       <relativeUnstableThresholdPositive>-1.0</relativeUnstableThresholdPositive>
@@ -91,29 +104,35 @@
       <ignoreUnstableBuilds>false</ignoreUnstableBuilds>
       <persistConstraintLog>false</persistConstraintLog>
       <sourceDataFiles>Test.xml</sourceDataFiles>
-      <filterRegex/>
-      <junitOutput/>
+      <filterRegex></filterRegex>
+      <junitOutput></junitOutput>
       <percentiles>0,50,90,100</percentiles>
       <baselineBuild>0</baselineBuild>
     </hudson.plugins.performance.PerformancePublisher>
-    <hudson.plugins.plot.PlotPublisher plugin="plot@2.1.0">
+    <hudson.plugins.plot.PlotPublisher plugin="plot@2.1.8">
       <plots>
         <hudson.plugins.plot.Plot>
           <title>Performance </title>
+          <description></description>
           <yaxis>mb/s</yaxis>
           <series>
             <hudson.plugins.plot.CSVSeries>
               <file>build/benchmarkdb.csv</file>
-              <label/>
+              <label></label>
               <fileType>csv</fileType>
               <inclusionFlag>OFF</inclusionFlag>
-              <exclusionValues/>
-              <url/>
+              <exclusionValues></exclusionValues>
+              <exclusionValuesList class="java.util.Arrays$ArrayList">
+                <a class="string-array">
+                  <string></string>
+                </a>
+              </exclusionValuesList>
+              <url></url>
               <displayTableFlag>false</displayTableFlag>
             </hudson.plugins.plot.CSVSeries>
           </series>
           <group>io</group>
-          <numBuilds/>
+          <numBuilds></numBuilds>
           <csvFileName>plot-1.csv</csvFileName>
           <csvLastModification>0</csvLastModification>
           <style>line</style>
@@ -121,8 +140,8 @@
           <keepRecords>false</keepRecords>
           <exclZero>false</exclZero>
           <logarithmic>false</logarithmic>
-          <yaxisMinimum/>
-          <yaxisMaximum/>
+          <yaxisMinimum></yaxisMinimum>
+          <yaxisMaximum></yaxisMaximum>
         </hudson.plugins.plot.Plot>
       </plots>
     </hudson.plugins.plot.PlotPublisher>

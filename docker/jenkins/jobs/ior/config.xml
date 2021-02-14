@@ -3,7 +3,12 @@
   <actions/>
   <description></description>
   <keepDependencies>false</keepDependencies>
-  <properties/>
+  <properties>
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.32.0">
+      <projectUrl>https://github.com/hpc/ior/</projectUrl>
+      <displayName></displayName>
+    </com.coravy.hudson.plugins.github.GithubProjectProperty>
+  </properties>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@4.5.2">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
@@ -24,9 +29,22 @@
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <triggers/>
+  <triggers>
+    <hudson.triggers.TimerTrigger>
+      <spec>H 6	* * *</spec>
+    </hudson.triggers.TimerTrigger>
+    <com.cloudbees.jenkins.GitHubPushTrigger plugin="github@1.32.0">
+      <spec></spec>
+    </com.cloudbees.jenkins.GitHubPushTrigger>
+  </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
+    <com.cloudbees.jenkins.GitHubSetCommitStatusBuilder plugin="github@1.32.0">
+      <statusMessage>
+        <content></content>
+      </statusMessage>
+      <contextSource class="org.jenkinsci.plugins.github.status.sources.DefaultCommitContextSource"/>
+    </com.cloudbees.jenkins.GitHubSetCommitStatusBuilder>
     <hudson.tasks.Shell>
       <command>./bootstrap
 ./configure
@@ -63,7 +81,7 @@ $HOME/jobs/ior/benchmark_md-workbench.sh</command>
             </hudson.plugins.plot.CSVSeries>
           </series>
           <group>ior</group>
-          <numBuilds></numBuilds>
+          <numBuilds>20</numBuilds>
           <csvFileName>plot-4747633465495449503.csv</csvFileName>
           <csvLastModification>0</csvLastModification>
           <style>line</style>
@@ -95,7 +113,7 @@ $HOME/jobs/ior/benchmark_md-workbench.sh</command>
             </hudson.plugins.plot.CSVSeries>
           </series>
           <group>ior</group>
-          <numBuilds></numBuilds>
+          <numBuilds>20</numBuilds>
           <csvFileName>plot-4747633465495449502.csv</csvFileName>
           <csvLastModification>0</csvLastModification>
           <style>line</style>
@@ -127,7 +145,7 @@ $HOME/jobs/ior/benchmark_md-workbench.sh</command>
             </hudson.plugins.plot.CSVSeries>
           </series>
           <group>mdtest</group>
-          <numBuilds></numBuilds>
+          <numBuilds>20</numBuilds>
           <csvFileName>plot-16228527026025130004.csv</csvFileName>
           <csvLastModification>0</csvLastModification>
           <style>line</style>
@@ -159,7 +177,7 @@ $HOME/jobs/ior/benchmark_md-workbench.sh</command>
             </hudson.plugins.plot.CSVSeries>
           </series>
           <group>mdtest</group>
-          <numBuilds></numBuilds>
+          <numBuilds>20</numBuilds>
           <csvFileName>plot-17275327126809348752.csv</csvFileName>
           <csvLastModification>0</csvLastModification>
           <style>line</style>
@@ -191,7 +209,7 @@ $HOME/jobs/ior/benchmark_md-workbench.sh</command>
             </hudson.plugins.plot.CSVSeries>
           </series>
           <group>mdtest</group>
-          <numBuilds></numBuilds>
+          <numBuilds>20</numBuilds>
           <csvFileName>plot-13254075975338870038.csv</csvFileName>
           <csvLastModification>0</csvLastModification>
           <style>line</style>
@@ -223,7 +241,7 @@ $HOME/jobs/ior/benchmark_md-workbench.sh</command>
             </hudson.plugins.plot.CSVSeries>
           </series>
           <group>mdtest</group>
-          <numBuilds></numBuilds>
+          <numBuilds>20</numBuilds>
           <csvFileName>plot-16228527026025130002.csv</csvFileName>
           <csvLastModification>0</csvLastModification>
           <style>line</style>
@@ -255,7 +273,7 @@ $HOME/jobs/ior/benchmark_md-workbench.sh</command>
             </hudson.plugins.plot.CSVSeries>
           </series>
           <group>mdtest</group>
-          <numBuilds></numBuilds>
+          <numBuilds>20</numBuilds>
           <csvFileName>plot-17275327126809348753.csv</csvFileName>
           <csvLastModification>0</csvLastModification>
           <style>line</style>
@@ -287,7 +305,7 @@ $HOME/jobs/ior/benchmark_md-workbench.sh</command>
             </hudson.plugins.plot.CSVSeries>
           </series>
           <group>mdtest</group>
-          <numBuilds></numBuilds>
+          <numBuilds>20</numBuilds>
           <csvFileName>plot-13254075975338870036.csv</csvFileName>
           <csvLastModification>0</csvLastModification>
           <style>line</style>
@@ -300,6 +318,21 @@ $HOME/jobs/ior/benchmark_md-workbench.sh</command>
         </hudson.plugins.plot.Plot>
       </plots>
     </hudson.plugins.plot.PlotPublisher>
+    <org.jenkinsci.plugins.github.status.GitHubCommitStatusSetter plugin="github@1.32.0">
+      <commitShaSource class="org.jenkinsci.plugins.github.status.sources.BuildDataRevisionShaSource"/>
+      <reposSource class="org.jenkinsci.plugins.github.status.sources.AnyDefinedRepositorySource"/>
+      <contextSource class="org.jenkinsci.plugins.github.status.sources.DefaultCommitContextSource"/>
+      <statusResultSource class="org.jenkinsci.plugins.github.status.sources.DefaultStatusResultSource"/>
+      <statusBackrefSource class="org.jenkinsci.plugins.github.status.sources.BuildRefBackrefSource"/>
+      <errorHandlers/>
+    </org.jenkinsci.plugins.github.status.GitHubCommitStatusSetter>
   </publishers>
-  <buildWrappers/>
+  <buildWrappers>
+    <hudson.plugins.build__timeout.BuildTimeoutWrapper plugin="build-timeout@1.20">
+      <strategy class="hudson.plugins.build_timeout.impl.AbsoluteTimeOutStrategy">
+        <timeoutMinutes>10</timeoutMinutes>
+      </strategy>
+      <operationList/>
+    </hudson.plugins.build__timeout.BuildTimeoutWrapper>
+  </buildWrappers>
 </project>
