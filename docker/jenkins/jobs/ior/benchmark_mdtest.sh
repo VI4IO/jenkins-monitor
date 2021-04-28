@@ -8,13 +8,13 @@ TREE=""
 TREE_VALUE=""
 
 for BTYPE in basic advanced ; do
-for log in $HOME/workspace/ior/test_logs/$BTYPE/*
+for log in /home/www-jenkins/git/docker/jenkins/workspace/ior/test_logs/$BTYPE/*
 do
     NUMBER="${log##*.}"
     while read LINE
     do
-	SPEED=$(echo $LINE | cut -f2- -d":" | cut -f2 -d ' ')
-	TYPE=$(echo $LINE | cut -f1 -d":" | cut -f2 -d ' ')
+	SPEED=$(echo "$LINE" | cut -b 23-40 )
+	TYPE=$(echo "$LINE" | cut -b -26 )
         if [[ $LINE == Directory* ]]; then
             DIRECTORY="$DIRECTORY, $NUMBER-$TYPE"
             DIRECTORY_VALUE="$DIRECTORY_VALUE, $SPEED"
@@ -25,7 +25,7 @@ do
             TREE="$TREE, $NUMBER-$TYPE"
             TREE_VALUE="$TREE_VALUE, $SPEED"
         fi
-    done < <(cat $log | cut -b4- | grep -E "^(Directory|File|Tree)")
+    done < <(cat $log| grep -E "^   (Directory|File|Tree)")
 done
 
 DIRECTORY_CSV=benchmark_mdtest_directory-$BTYPE.csv
